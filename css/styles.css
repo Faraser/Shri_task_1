@@ -1,0 +1,51 @@
+body {
+    font: 1em normal Arial, sans-serif;
+    color:black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    overflow: hidden;
+    z-index: 1;
+
+}
+thead {
+    background:#1ABC9C;
+    color: white;
+}
+
+th, td{
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+}
+
+tr:nth-child(even){
+    background: #ECF0F1;
+}
+
+tbody tr:hover{
+    /*background:#BDC3C7;*/
+    background:#ffa;
+    overflow: hidden;
+}
+
+td, th {
+    border: 1px solid #1ABC9C;
+
+
+}
+
+ td:hover::after {
+    background-color: #ffa;
+    content: '';
+    height: 10000px;
+    left: 0;
+    position: absolute;
+    top: -5000px;
+    width: 100%;
+    z-index: -1;
+}
+
