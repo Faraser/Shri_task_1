@@ -4,42 +4,94 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/styles.css"/>
     <title></title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        ;
+        (function ($) {
+            $.fn.fixMe = function () {
+                return this.each(function () {
+                    var $this = $(this),
+                            $t_fixed;
+
+                    function init() {
+                        $this.wrap('<div class="container" />');
+                        $t_fixed = $this.clone();
+                        $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
+                        resizeFixed();
+                    }
+
+                    function resizeFixed() {
+                        $t_fixed.find("th").each(function (index) {
+                            $(this).css("width", $this.find("th").eq(index).outerWidth() + "px");
+                        });
+                    }
+
+                    function scrollFixed() {
+                        var offset = $(this).scrollTop(),
+                                tableOffsetTop = $this.offset().top,
+                                tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height();
+                        if (offset < tableOffsetTop || offset > tableOffsetBottom)
+                            $t_fixed.hide();
+                        else if (offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden"))
+                            $t_fixed.show();
+                    }
+
+                    $(window).resize(resizeFixed);
+                    $(window).scroll(scrollFixed);
+                    init();
+                });
+            };
+        })(jQuery);
+
+        $(document).ready(function () {
+            $("table").fixMe();
+            $(".up").click(function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 2000);
+            });
+        });
+    </script>
 </head>
+
 <body>
 <div style="height: 300px;"></div>
-<table class="main-table" id="main-table">
+<table>
     <thead class="header">
-        <tr>
-            <th>Тип рейса</th>
-            <th>Номер рейса</th>
-            <th colspan="2">Авиакомпания</th>
-            <th>Тип ВС</th>
-            <th>Назначение</th>
-            <th>Отправление</th>
-            <th>Прибытие</th>
-            <th>Статус рейса</th>
-            <th>Примечание</th>
-        </tr>
+    <tr>
+        <th>Тип рейса</th>
+        <th>Номер рейса</th>
+        <th colspan="2">Авиакомпания</th>
+        <th>Тип ВС</th>
+        <th>Назначение</th>
+        <th>Отправление</th>
+        <th>Прибытие</th>
+        <th>Статус рейса</th>
+        <th>Примечание</th>
+    </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr class="init">
         <td>Вылет</td>
         <td>SU2471</td>
         <td>Аэрофлот</td>
         <td><img src="img/aeroflot-icon.png"></td>
-        <td>Airbus А320</td>
+        <td><span class="long-name">Airbus А320</span><span class="short-name">A320</span> </td>
         <td>Адлер Адлер - Сочи</td>
         <td>18:52</td>
         <td>21:52</td>
         <td>Отправлен</td>
         <td>-</td>
+        <!--<td class="info"><div class="info-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div></td>-->
+        <td class="overlay"><div class="popup">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div></td>
     </tr>
     <tr>
         <td>Вылет</td>
-        <td>CZ355 </td>
+        <td>CZ355</td>
         <td>China Southirn</td>
         <td><img src="img/china-icon.png"></td>
-        <td>Airbus А319</td>
+        <td><span class="long-name">Airbus А320</span><span class="short-name">A320</span></td>
         <td>Ухань Ухань</td>
         <td>12:52</td>
         <td>16:52</td>
@@ -51,7 +103,7 @@
         <td>UT162</td>
         <td>UTair</td>
         <td><img src="img/utair-icon.png"></td>
-        <td>Boeing 737</td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
         <td>Махачкала Уйташ</td>
         <td>14:52</td>
         <td>21:52</td>
@@ -63,7 +115,7 @@
         <td>FV6163</td>
         <td>Russiya Airlines</td>
         <td><img src="img/russia-icon.png"></td>
-        <td>Boeing 737</td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
         <td>Санкт-Петербург Пулково</td>
         <td>13:52</td>
         <td>00:52</td>
@@ -72,11 +124,11 @@
     </tr>
     <tr>
         <td>Прилет</td>
-        <td>UN308 </td>
+        <td>UN308</td>
         <td> Transaero</td>
         <td><img src="img/transaero-icon.png"></td>
-        <td>Boeing 737</td>
-        <td>Лондон Хитроу </td>
+        <td><span class="long-name">Airbus А320</span><span class="short-name">B737</span></td>
+        <td>Лондон Хитроу</td>
         <td>13:52</td>
         <td>00:52</td>
         <td>В полете</td>
@@ -87,43 +139,7 @@
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
         <td><img src="img/polishairlines-icon.png"></td>
-        <td>Boeing 737</td>
-        <td>Варшава Варшава, им. Фредерика Шопена</td>
-        <td>13:52</td>
-        <td>00:52</td>
-        <td>Приземлился</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>Вылет</td>
-        <td>LO677</td>
-        <td>LOT - Polish Airlines</td>
-        <td><img src="img/polishairlines-icon.png"></td>
-        <td>Boeing 737</td>
-        <td>Варшава Варшава, им. Фредерика Шопена</td>
-        <td>13:52</td>
-        <td>00:52</td>
-        <td>Приземлился</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>Вылет</td>
-        <td>LO677</td>
-        <td>LOT - Polish Airlines</td>
-        <td><img src="img/polishairlines-icon.png"></td>
-        <td>Boeing 737</td>
-        <td>Варшава Варшава, им. Фредерика Шопена</td>
-        <td>13:52</td>
-        <td>00:52</td>
-        <td>Приземлился</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td>Вылет</td>
-        <td>LO677</td>
-        <td>LOT - Polish Airlines</td>
-        <td><img src="img/polishairlines-icon.png"></td>
-        <td>Boeing 737</td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
         <td>Варшава Варшава, им. Фредерика Шопена</td>
         <td>13:52</td>
         <td>00:52</td>
@@ -134,28 +150,65 @@
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
         <td><img src="img/polishairlines-icon.png"></td>
-        <td>Boeing 737</td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
         <td>Варшава Варшава, им. Фредерика Шопена</td>
         <td>13:52</td>
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
-    </tr>
-    <tr>
+    </tr>    <tr>
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
         <td><img src="img/polishairlines-icon.png"></td>
-        <td>Boeing 737</td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
+        <td>Варшава Варшава, им. Фредерика Шопена</td>
+        <td>13:52</td>
+        <td>00:52</td>
+        <td>Приземлился</td>
+        <td>-</td>
+    </tr>    <tr>
+        <td>Вылет</td>
+        <td>LO677</td>
+        <td>LOT - Polish Airlines</td>
+        <td><img src="img/polishairlines-icon.png"></td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
+        <td>Варшава Варшава, им. Фредерика Шопена</td>
+        <td>13:52</td>
+        <td>00:52</td>
+        <td>Приземлился</td>
+        <td>-</td>
+    </tr>    <tr>
+        <td>Вылет</td>
+        <td>LO677</td>
+        <td>LOT - Polish Airlines</td>
+        <td><img src="img/polishairlines-icon.png"></td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
+        <td>Варшава Варшава, им. Фредерика Шопена</td>
+        <td>13:52</td>
+        <td>00:52</td>
+        <td>Приземлился</td>
+        <td>-</td>
+    </tr>    <tr>
+        <td>Вылет</td>
+        <td>LO677</td>
+        <td>LOT - Polish Airlines</td>
+        <td><img src="img/polishairlines-icon.png"></td>
+        <td><span class="long-name">Boeing 737</span><span class="short-name">B737</span></td>
         <td>Варшава Варшава, им. Фредерика Шопена</td>
         <td>13:52</td>
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
     </tr>
+
     </tbody>
 </table>
 
-<div style="height: 300px;"></div><div style="height: 300px;"></div>
+<div style="height: 300px;" id="red">
+    <div class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto at debitis iure laborum nesciunt nihil. Aliquam deleniti exercitationem, laboriosam nobis obcaecati ratione repudiandae saepe sint! Consequuntur error magni numquam!</div>
+</div>
+<div style="height: 300px;"></div>
+
 </body>
 </html>

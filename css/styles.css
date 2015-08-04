@@ -1,124 +1,159 @@
 body {
-    font: 1em normal Arial, sans-serif;
-    color: black;
-    width: 1000px;
+    font: 1.2em normal Arial, sans-serif;
+    color: #34495E;
 }
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
 table {
     border-collapse: collapse;
-    /*width: 100%;*/
-
-    /*overflow: hidden;*/
-    /*z-index: 1;*/
-
+    width: 100%;
+    border: 2px solid #1ABC9C;
 }
 
-table tbody, table thead {
-    display: block;
-    /*max-width: 1000px;*/
-}
-
-table thead {
+thead {
     background: #1ABC9C;
     color: white;
 }
 
-table tbody {
-    overflow: auto;
-    height: 300px;
-    /*width: 100%;*/
+th, td {
+    text-align: center;
+    padding: 5px 0;
 }
-
 
 tbody tr:nth-child(even) {
     background: #ECF0F1;
 }
 
 tbody tr:hover {
-    background: #ffa;
+    background: #BDC3C7;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
-th, td {
-    text-align: center;
-    padding: 0 5px;
-    /*position: relative;*/
-    border: 1px solid #1ABC9C;
-    box-sizing: border-box;
-        overflow: hidden;
-    text-overflow: ellipsis;
-}
-tbody td:nth-child(1),
-thead th:nth-child(1) {
-    outline: 1px solid red;
-    min-width: 100px;
+.fixed {
+    top: 0;
+    position: fixed;
+    width: auto;
+    display: none;
+    border: none;
 }
 
-tbody td:nth-child(2),
-thead th:nth-child(2) {
-    outline: 1px solid green;
-    min-width: 100px;
+.scrollMore {
+    margin-top: 600px;
 }
 
-thead th:nth-child(3){
-    outline: 1px solid blue;
-    min-width: 250px;
-    /*max-width: 250px;*/
+.up {
+    cursor: pointer;
 }
 
-tbody td:nth-child(3){
-    outline: 1px solid blue;
-    width: 100px;
-}
-tbody td:nth-child(4) {
-    outline: 1px solid blue;
-    max-width: 150px;
+.short-name {
+    display: none;
 }
 
-tbody td:nth-child(5),
-thead th:nth-child(4) {
-    outline: 1px solid purple;
-    min-width: 80px;
-    max-width: 80px;
+@media screen and (max-width: 900px) {
+    tbody td:nth-child(3) {
+        display: none;
+    }
 }
 
-tbody td:nth-child(6),
-thead th:nth-child(5) {
-    outline: 1px solid purple;
-    min-width: 240px;
-    max-width: 240px;
+@media screen and (max-width: 800px) {
+
+    .long-name {
+        display: none;
+    }
+
+    .short-name {
+        display: inline;
+    }
+
 }
 
-tbody td:nth-child(7),
-thead th:nth-child(6),
-tbody td:nth-child(8),
-thead th:nth-child(7){
-    outline: 1px solid yellow;
-    min-width: 60px;
-    max-width: 60px;
-    /*width: 60px;*/
+#red {
+    background: red
 }
 
-tbody td:nth-child(9),
-thead th:nth-child(8) {
-    outline: 1px solid orange;
-    min-width: 100px;
-    max-width: 100px;
+.init:active .info {
+
+    display: block;
 }
 
-tbody td:nth-child(10),
-thead th:nth-child(9) {
-    outline: 1px solid orange;
-    /*min-width: 100px;*/
-    /*max-width: 100px;*/
+.info:hover {
+    display: block;
 }
 
-/*td:hover::after {*/
-/*background-color: #ffa;*/
-/*content: '';*/
-/*height: 10000px;*/
-/*left: 0;*/
-/*position: absolute;*/
-/*top: -5000px;*/
-/*width: 100%;*/
-/*z-index: -1;*/
-/*}*/
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: none;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 5px 5px 2px #aaa;
+    border: 1px solid grey;
+    padding: 8px;
+    width: 200px;
+    height: 200px;
+    color: black;
+}
 
+.info:active {
+    display: none; /* Doesn't work because DCEvent is :active as well */
+    height: 0px;
+    width: 0px;
+    left: -1000px;
+    top: -1000px;
+}
+
+.init:active .overlay {
+    display: block;
+}
+
+.overlay:hover {
+    display: block;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    display: none;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.7);
+    color: black;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    background-color: white;
+    box-shadow: 5px 5px 2px #aaa;
+    border: 1px solid grey;
+    padding: 8px;
+    width: 200px;
+    height: 200px;
+    color: black;
+}
+
+.overlay:active {
+    display: none; /* Doesn't work because DCEvent is :active as well */
+    height: 0px;
+    width: 0px;
+    left: -1000px;
+    top: -1000px;
+}
