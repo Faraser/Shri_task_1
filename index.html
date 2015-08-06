@@ -57,6 +57,14 @@
 
 <body>
 <div style="height: 300px;"></div>
+
+<input type="checkbox" id="flyin" checked>
+<input type="checkbox" id="flyout" checked>
+
+<div class="controls">
+    <label for="flyin" class="check-flyin">Прилет</label>
+    <label for="flyout" class="check-flyout">Вылет</label>
+</div>
 <table>
     <thead class="header">
     <tr>
@@ -72,21 +80,23 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="init">
+    <tr class="init flyout">
         <td>Вылет</td>
         <td>SU2471</td>
         <td>Аэрофлот</td>
         <td><img src="img/aeroflot-icon.png"></td>
-        <td><span class="long-name">Airbus А320</span><span class="short-name">A320</span> </td>
+        <td><span class="long-name">Airbus А320</span><span class="short-name">A320</span></td>
         <td>Адлер Адлер - Сочи</td>
         <td>18:52</td>
         <td>21:52</td>
         <td>Отправлен</td>
         <td>-</td>
         <!--<td class="info"><div class="info-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div></td>-->
-        <td class="overlay"><div class="popup">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div></td>
+        <td class="overlay">
+            <div class="popup">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div>
+        </td>
     </tr>
-    <tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>CZ355</td>
         <td>China Southirn</td>
@@ -98,7 +108,7 @@
         <td>Отправлен</td>
         <td>-</td>
     </tr>
-    <tr>
+    <tr class="flyin">
         <td>Прилет</td>
         <td>UT162</td>
         <td>UTair</td>
@@ -110,7 +120,7 @@
         <td>Приземлился</td>
         <td>-</td>
     </tr>
-    <tr>
+    <tr class="flyin">
         <td>Прилет</td>
         <td>FV6163</td>
         <td>Russiya Airlines</td>
@@ -122,7 +132,7 @@
         <td>По расписанию</td>
         <td>-</td>
     </tr>
-    <tr>
+    <tr class="flyin">
         <td>Прилет</td>
         <td>UN308</td>
         <td> Transaero</td>
@@ -134,7 +144,7 @@
         <td>В полете</td>
         <td>-</td>
     </tr>
-    <tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
@@ -145,7 +155,8 @@
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
-    </tr>    <tr>
+    </tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
@@ -156,7 +167,8 @@
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
-    </tr>    <tr>
+    </tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
@@ -167,7 +179,8 @@
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
-    </tr>    <tr>
+    </tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
@@ -178,7 +191,8 @@
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
-    </tr>    <tr>
+    </tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
@@ -189,7 +203,8 @@
         <td>00:52</td>
         <td>Приземлился</td>
         <td>-</td>
-    </tr>    <tr>
+    </tr>
+    <tr class="flyout">
         <td>Вылет</td>
         <td>LO677</td>
         <td>LOT - Polish Airlines</td>
@@ -206,7 +221,10 @@
 </table>
 
 <div style="height: 300px;" id="red">
-    <div class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto at debitis iure laborum nesciunt nihil. Aliquam deleniti exercitationem, laboriosam nobis obcaecati ratione repudiandae saepe sint! Consequuntur error magni numquam!</div>
+    <div class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto at debitis iure
+        laborum nesciunt nihil. Aliquam deleniti exercitationem, laboriosam nobis obcaecati ratione repudiandae saepe
+        sint! Consequuntur error magni numquam!
+    </div>
 </div>
 <div style="height: 300px;"></div>
 
