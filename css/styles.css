@@ -36,14 +36,16 @@ th, td {
     padding: 5px 0;
 }
 
-tbody tr:nth-child(2n) {
+/*tbody tr:nth-child(2n) {*/
+    /*background: #ECF0F1;*/
+/*}*/
+.strip{
     background: #ECF0F1;
 }
 
-
 tbody tr:hover {
-    background: #BDC3C7;
-    color: #FFFFFF;
+    background: #CCE7E7;
+    /*color: #FFFFFF;*/
     cursor: pointer;
 }
 
@@ -77,11 +79,13 @@ thead th:nth-child(3) {
     tbody td:nth-child(3) {
         display: none;
     }
+
     thead th:nth-child(3) {
-    position: relative;
-    left: 0;
+        position: relative;
+        left: 0;
+    }
 }
-}
+
 @media screen and (max-width: 1000px) {
     thead th:nth-child(8),
     tbody td:nth-child(8),
@@ -111,13 +115,14 @@ thead th:nth-child(3) {
 
     thead th:nth-child(3),
     tbody td:nth-child(4),
-    tbody td:nth-child(4) img{
+    tbody td:nth-child(4) img {
         overflow: hidden;
         text-overflow: ellipsis;
         /*outline: 1px solid green;*/
         max-width: 100px;
         height: auto;
     }
+
     thead th:nth-child(10),
     tbody td:nth-child(10) {
         overflow: hidden;
@@ -135,6 +140,7 @@ thead th:nth-child(3) {
     .short-name {
         display: inline;
     }
+
     table {
         font-size: 14px;
     }
@@ -151,6 +157,7 @@ thead th:nth-child(3) {
         /*outline: 1px solid red;*/
         max-width: 50px;
     }
+
     thead th:nth-child(10),
     tbody td:nth-child(10) {
         display: none;
@@ -159,7 +166,7 @@ thead th:nth-child(3) {
 
 @media screen and (max-width: 550px) {
     thead th:nth-child(3),
-    tbody td:nth-child(4){
+    tbody td:nth-child(4) {
         display: none;
     }
 
@@ -167,7 +174,7 @@ thead th:nth-child(3) {
 
 @media screen and (max-width: 450px) {
     thead th:nth-child(5),
-    tbody td:nth-child(5){
+    tbody td:nth-child(5) {
         display: none;
     }
 
@@ -175,16 +182,17 @@ thead th:nth-child(3) {
 
 @media screen and (max-width: 400px) {
     thead th:nth-child(6),
-    tbody td:nth-child(6){
+    tbody td:nth-child(6) {
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 70px ;
+        max-width: 70px;
     }
+
     thead th:nth-child(9),
-    tbody td:nth-child(9){
+    tbody td:nth-child(9) {
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 50px ;
+        max-width: 50px;
     }
 
 }
@@ -311,3 +319,22 @@ input[type="checkbox"], .flyin, .flyout {
     text-shadow: 0px 0px 3px #eee;
 }
 
+/*table {*/
+    /*overflow: hidden;*/
+    /*z-index: 1;*/
+/*}*/
+
+/*tbody td {*/
+    /*position: relative;*/
+/*}*/
+
+/*tbody td:hover::after {*/
+    /*background-color: #CCE7E7 !important;*/
+    /*content: '\00a0';*/
+    /*height: 10000px;*/
+    /*left: 0;*/
+    /*position: absolute;*/
+    /*top: -5000px;*/
+    /*width: 100%;*/
+    /*z-index: -1;*/
+/*}*/

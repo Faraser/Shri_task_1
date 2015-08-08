@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="css/styles.css"/>
     <title></title>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript">
         ;
         (function ($) {
@@ -43,7 +44,16 @@
                 });
             };
         })(jQuery);
-
+        var strip = function () {
+            var $tr = $('.container tbody tr');
+            $tr.removeClass('strip');
+            $tr = $tr.filter(function () {
+                return $(this).css('display') === "table-row"
+            });
+            for (var i = 0; i < $tr.length; i = i + 2) {
+                $($tr[i]).addClass('strip');
+            }
+        };
         $(document).ready(function () {
             $("table").fixMe();
             $(".up").click(function () {
@@ -51,6 +61,11 @@
                     scrollTop: 0
                 }, 2000);
             });
+
+            $('input[type="checkbox"]').on('change', function () {
+                setTimeout(strip, 0)
+            });
+            strip();
         });
     </script>
 </head>
@@ -70,7 +85,7 @@
     <tr>
         <th>Тип рейса</th>
         <th>Номер рейса</th>
-        <th >Авиакомпания</th>
+        <th>Авиакомпания</th>
         <th></th>
         <th>Тип ВС</th>
         <th>Назначение</th>
