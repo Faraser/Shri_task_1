@@ -48,6 +48,9 @@ tbody tr:hover {
     /*color: #FFFFFF;*/
     cursor: pointer;
 }
+.highlighted {
+    background: #CCE7E7;
+}
 
 .fixed {
     top: 0;
@@ -272,7 +275,15 @@ thead th:nth-child(3) {
     border-radius: 5px;
 }
 
-.overlay:active {
+/*.overlay:active {*/
+    /*display: none; /!* Doesn't work because DCEvent is :active as well *!/*/
+    /*height: 0px;*/
+    /*width: 0px;*/
+    /*left: -1000px;*/
+    /*top: -1000px;*/
+/*}*/
+
+.overlay .popup a:active {
     display: none; /* Doesn't work because DCEvent is :active as well */
     height: 0px;
     width: 0px;
@@ -329,7 +340,7 @@ input[type="checkbox"], .flyin, .flyout {
 /*}*/
 
 /*tbody td:hover::after {*/
-    /*background-color: #CCE7E7 !important;*/
+    /*background-color: #CCE7E7 ;*/
     /*content: '\00a0';*/
     /*height: 10000px;*/
     /*left: 0;*/
@@ -338,3 +349,4 @@ input[type="checkbox"], .flyin, .flyout {
     /*width: 100%;*/
     /*z-index: -1;*/
 /*}*/
+

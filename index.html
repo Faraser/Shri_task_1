@@ -66,6 +66,14 @@
                 setTimeout(strip, 0)
             });
             strip();
+            $('td').hover(function() {
+                        var t = parseInt($(this).index()) + 1;
+                        $('td:nth-child(' + t + ')').addClass('highlighted');
+                    },
+                    function() {
+                        var t = parseInt($(this).index()) + 1;
+                        $('td:nth-child(' + t + ')').removeClass('highlighted');
+                    });
         });
     </script>
 </head>
@@ -109,7 +117,7 @@
         <td>-</td>
         <!--<td class="info"><div class="info-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div></td>-->
         <td class="overlay">
-            <div class="popup">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div>
+            <div class="popup"><a href="">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Dolores, unde?</div>
         </td>
     </tr>
     <tr class="flyout">
