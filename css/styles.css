@@ -233,9 +233,10 @@ thead th:nth-child(3) {
     border: 1px solid grey;
     padding: 8px;
     width: 300px;
-    height: 500px;
+    height: 460px;
     color: black;
     border-radius: 5px;
+    font-size: 15px;
 }
 
 .popup .close {
@@ -252,6 +253,10 @@ thead th:nth-child(3) {
 }
 .popup .close:hover {
     color: orange;
+}
+
+.popup-table td{
+    padding: 5px;
 }
 
 /*checkboxes*/
