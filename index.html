@@ -4,79 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/styles.css"/>
     <title></title>
-
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        ;
-        (function ($) {
-            $.fn.fixMe = function () {
-                return this.each(function () {
-                    var $this = $(this),
-                            $t_fixed;
-
-                    function init() {
-                        $this.wrap('<div class="container" />');
-                        $t_fixed = $this.clone();
-                        $t_fixed.find("tbody").remove().end().addClass("fixed").insertBefore($this);
-                        resizeFixed();
-                    }
-
-                    function resizeFixed() {
-                        $t_fixed.find("th").each(function (index) {
-                            $(this).css("width", $this.find("th").eq(index).outerWidth() + "px");
-                        });
-                    }
-
-                    function scrollFixed() {
-                        var offset = $(this).scrollTop(),
-                                tableOffsetTop = $this.offset().top,
-                                tableOffsetBottom = tableOffsetTop + $this.height() - $this.find("thead").height();
-                        if (offset < tableOffsetTop || offset > tableOffsetBottom)
-                            $t_fixed.hide();
-                        else if (offset >= tableOffsetTop && offset <= tableOffsetBottom && $t_fixed.is(":hidden"))
-                            $t_fixed.show();
-                    }
-
-                    $(window).resize(resizeFixed);
-                    $(window).scroll(scrollFixed);
-                    init();
-                });
-            };
-        })(jQuery);
-        var strip = function () {
-            var $tr = $('.container tbody tr');
-            $tr.removeClass('strip');
-            $tr = $tr.filter(function () {
-                return $(this).css('display') === "table-row"
-            });
-            for (var i = 0; i < $tr.length; i = i + 2) {
-                $($tr[i]).addClass('strip');
-            }
-        };
-        $(document).ready(function () {
-            $("table").fixMe();
-            $(".up").click(function () {
-                $('html, body').animate({
-                    scrollTop: 0
-                }, 2000);
-            });
-
-            $('input[id^="fly"]').on('change', function () {
-                setTimeout(strip, 0)
-            });
-            strip();
-
-            $('.avia-table > tbody > tr >td').hover(function () {
-                        var t = parseInt($(this).index()) + 1;
-                        $('td:nth-child(' + t + ')').addClass('highlighted');
-                    },
-                    function () {
-                        var t = parseInt($(this).index()) + 1;
-                        $('td:nth-child(' + t + ')').removeClass('highlighted');
-                    });
-        });
-    </script>
+    <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -107,30 +36,32 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="init flyout">
-        <td><label for="tr1">Вылет</label></td>
+    <tr class="flyout">
+        <td><label for="tr1"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
         <td><label for="tr1">SU2471</label></td>
         <td><label for="tr1">Аэрофлот</label></td>
-        <td><label for="tr1"><img src="img/aeroflot-icon.png"></label></td>
+        <td><label for="tr1"><i class="sprite sprite-aeroflot-icon"></i></label></td>
         <td><label for="tr1"><span class="long-name">Airbus А320</span><span class="short-name">A320</span></label></td>
-        <td><label for="tr1">Адлер - Сочи</label></td>
+        <td><label for="tr1"><span class="long-name">Адлер - Сочи</span><span class="short-name">Адлер</span></label>
+        </td>
         <td><label for="tr1">18:52</label></td>
         <td><label for="tr1">21:52</label></td>
         <td><label for="tr1">Отправлен</label></td>
         <td><label for="tr1">-</label></td>
         <td>
             <input type="checkbox" id="tr1">
-            <div class="overlay" >
+
+            <div class="overlay">
                 <div class="popup">
                     <h3>Информация о рейсе</h3>
                     <table class="popup-table">
                         <tr>
                             <td>Вылет</td>
-                            <td>Сочи , 11.08 в 04:45  </td>
+                            <td>Сочи , 11.08 в 04:45</td>
                         </tr>
                         <tr>
                             <td>Направление</td>
-                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05 </td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
                         </tr>
                         <tr>
                             <td>Номер рейса</td>
@@ -173,28 +104,30 @@
 
     </tr>
     <tr class="flyout">
-        <td><label for="tr2">Вылет</label></td>
+        <td><label for="tr2"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
         <td><label for="tr2">CZ355</label></td>
         <td><label for="tr2">China Southirn</label></td>
-        <td><label for="tr2"><img src="img/china-icon.png"></label></td>
+        <td><label for="tr2"><i class="sprite sprite-china-icon"></i></label></td>
         <td><label for="tr2"><span class="long-name">Airbus А320</span><span class="short-name">A320</span></label></td>
-        <td><label for="tr2">Ухань Ухань</label></td>
+        <td><label for="tr2"><span class="long-name">Ухань Ухань</span><span class="short-name">Ухань</span></label>
+        </td>
         <td><label for="tr2">12:52</label></td>
         <td><label for="tr2">16:52</label></td>
         <td><label for="tr2">Отправлен</label></td>
         <td><label for="tr2">-</label></td>
         <td><input type="checkbox" id="tr2">
-            <div class="overlay" >
+
+            <div class="overlay">
                 <div class="popup">
                     <h3>Информация о рейсе</h3>
                     <table class="popup-table">
                         <tr>
                             <td>Вылет</td>
-                            <td>Ухань , 11.08 в 04:45  </td>
+                            <td>Ухань , 11.08 в 04:45</td>
                         </tr>
                         <tr>
                             <td>Направление</td>
-                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05 </td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
                         </tr>
                         <tr>
                             <td>Номер рейса</td>
@@ -231,31 +164,34 @@
                     </table>
                     <label for="tr2" class="close">×</label>
                 </div>
-            </div></td>
+            </div>
+        </td>
     </tr>
     <tr class="flyin">
-        <td><label for="tr3">Прилет</label></td>
+        <td><label for="tr3"><i class="fly_icon icon-2"></i><span class="fly_type">Прилет</span></label></td>
         <td><label for="tr3">UT162</label></td>
         <td><label for="tr3">UTair</label></td>
-        <td><label for="tr3"><img src="img/utair-icon.png"></label></td>
+        <td><label for="tr3"><i class="sprite sprite-utair-icon"></i></label></td>
         <td><label for="tr3"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
-        <td><label for="tr3">Махачкала Уйташ</label></td>
+        <td><label for="tr3"><span class="long-name">Махачкала Уйташ</span><span
+                class="short-name">Махачкала</span></label></td>
         <td><label for="tr3">14:52</label></td>
         <td><label for="tr3">21:52</label></td>
         <td><label for="tr3">Приземлился</label></td>
         <td>-</td>
         <td><input type="checkbox" id="tr3">
-            <div class="overlay" >
+
+            <div class="overlay">
                 <div class="popup">
                     <h3>Информация о рейсе</h3>
                     <table class="popup-table">
                         <tr>
                             <td>Вылет</td>
-                            <td>Махачкала , 11.08 в 04:45  </td>
+                            <td>Махачкала , 11.08 в 04:45</td>
                         </tr>
                         <tr>
                             <td>Направление</td>
-                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05 </td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
                         </tr>
                         <tr>
                             <td>Номер рейса</td>
@@ -292,31 +228,34 @@
                     </table>
                     <label for="tr3" class="close">×</label>
                 </div>
-            </div></td>
+            </div>
+        </td>
     </tr>
     <tr class="flyin">
-        <td><label for="tr4">Прилет</label></td>
+        <td><label for="tr4"><i class="fly_icon icon-2"></i><span class="fly_type">Прилет</span></label></td>
         <td><label for="tr4">FV6163</label></td>
         <td><label for="tr4">Russiya Airlines</label></td>
-        <td><label for="tr4"><img src="img/russia-icon.png"></label></td>
+        <td><label for="tr4"><i class="sprite sprite-russia-icon"></i></label></td>
         <td><label for="tr4"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
-        <td><label for="tr4">Санкт-Петербург Пулково</label></td>
+        <td><label for="tr4"><span class="long-name">Санкт-Петербург Пулково</span><span class="short-name">Санкт-Петербург</span></label>
+        </td>
         <td><label for="tr4">13:52</label></td>
         <td><label for="tr4">00:52</label></td>
         <td><label for="tr4">По расписанию</label></td>
         <td>-</td>
         <td><input type="checkbox" id="tr4">
-            <div class="overlay" >
+
+            <div class="overlay">
                 <div class="popup">
                     <h3>Информация о рейсе</h3>
                     <table class="popup-table">
                         <tr>
                             <td>Вылет</td>
-                            <td>Махачкала , 11.08 в 04:45  </td>
+                            <td>Махачкала , 11.08 в 04:45</td>
                         </tr>
                         <tr>
                             <td>Направление</td>
-                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05 </td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
                         </tr>
                         <tr>
                             <td>Номер рейса</td>
@@ -353,31 +292,34 @@
                     </table>
                     <label for="tr4" class="close">×</label>
                 </div>
-            </div></td>
+            </div>
+        </td>
     </tr>
     <tr class="flyin">
-        <td><label for="tr5">Прилет</label></td>
+        <td><label for="tr5"><i class="fly_icon icon-2"></i><span class="fly_type">Прилет</span></label></td>
         <td><label for="tr5">UN308</label></td>
         <td><label for="tr5">Transaero</label></td>
-        <td><label for="tr5"><img src="img/transaero-icon.png"></label></td>
+        <td><label for="tr5"><i class="sprite sprite-transaero-icon"></i></label></td>
         <td><label for="tr5"><span class="long-name">Airbus А320</span><span class="short-name">B737</span></label></td>
-        <td><label for="tr5">Лондон Хитроу</label></td>
+        <td><label for="tr5"><span class="long-name">Лондон Хитроу</span><span class="short-name">Лондон</span></label>
+        </td>
         <td><label for="tr5">13:52</label></td>
-        <td><label for="tr5">00:52</label></td>
+        <td><label for="tr5">2:11</label></td>
         <td><label for="tr5">В полете</label></td>
         <td><label for="tr5">-</label></td>
         <td><input type="checkbox" id="tr5">
-            <div class="overlay" >
+
+            <div class="overlay">
                 <div class="popup">
                     <h3>Информация о рейсе</h3>
                     <table class="popup-table">
                         <tr>
                             <td>Вылет</td>
-                            <td>Махачкала , 11.08 в 04:45  </td>
+                            <td>Махачкала , 11.08 в 04:45</td>
                         </tr>
                         <tr>
                             <td>Направление</td>
-                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05 </td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
                         </tr>
                         <tr>
                             <td>Номер рейса</td>
@@ -414,31 +356,34 @@
                     </table>
                     <label for="tr5" class="close">×</label>
                 </div>
-            </div></td>
+            </div>
+        </td>
     </tr>
     <tr class="flyout">
-        <td><label for="tr6">Вылет</label></td>
+        <td><label for="tr6"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
         <td><label for="tr6">LO677</label></td>
         <td><label for="tr6">LOT - Polish Airlines</label></td>
-        <td><label for="tr6"><img src="img/polishairlines-icon.png"></label></td>
+        <td><label for="tr6"><i class="sprite sprite-polishairlines-icon"></i></label></td>
         <td><label for="tr6"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
-        <td><label for="tr6">Варшава Варшава, им. Фредерика Шопена</label></td>
+        <td><label for="tr6"><span class="long-name">Варшава Варшава, им. Фредерика Шопена</span><span
+                class="short-name">Варшава</span></label></td>
         <td><label for="tr6">13:52</label></td>
-        <td><label for="tr6">00:52</label></td>
+        <td><label for="tr6">00:45</label></td>
         <td><label for="tr6">Приземлился</label></td>
         <td><label for="tr6">-</label></td>
         <td><input type="checkbox" id="tr6">
-            <div class="overlay" >
+
+            <div class="overlay">
                 <div class="popup">
                     <h3>Информация о рейсе</h3>
                     <table class="popup-table">
                         <tr>
                             <td>Вылет</td>
-                            <td>Махачкала , 11.08 в 04:45  </td>
+                            <td>Махачкала , 11.08 в 04:45</td>
                         </tr>
                         <tr>
                             <td>Направление</td>
-                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05 </td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
                         </tr>
                         <tr>
                             <td>Номер рейса</td>
@@ -475,17 +420,397 @@
                     </table>
                     <label for="tr6" class="close">×</label>
                 </div>
-            </div></td>
+            </div>
+        </td>
     </tr>
+    <tr class="flyout">
+        <td><label for="tr6"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
+        <td><label for="tr6">BA8783</label></td>
+        <td><label for="tr6">AirBaltic </label></td>
+        <td><label for="tr6"><i class="sprite sprite-airbaltic-icon"></i></label></td>
+        <td><label for="tr6"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
+        <td><label for="tr6"><span class="long-name">Самара Курумоч</span><span
+                class="short-name">Самара</span></label></td>
+        <td><label for="tr6">13:52</label></td>
+        <td><label for="tr6">00:37</label></td>
+        <td><label for="tr6">Задержан</label></td>
+        <td><label for="tr6">-</label></td>
+        <td><input type="checkbox" id="tr7">
 
+            <div class="overlay">
+                <div class="popup">
+                    <h3>Информация о рейсе</h3>
+                    <table class="popup-table">
+                        <tr>
+                            <td>Вылет</td>
+                            <td>Самара, 11.08 в 04:45</td>
+                        </tr>
+                        <tr>
+                            <td>Направление</td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
+                        </tr>
+                        <tr>
+                            <td>Номер рейса</td>
+                            <td>SU2471</td>
+                        </tr>
+                        <tr>
+                            <td>Авиакомпания</td>
+                            <td>Аэрофлот</td>
+                        </tr>
+                        <tr>
+                            <td>Воздушное судно</td>
+                            <td>Airbus А320</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, начало</td>
+                            <td>10.08 13:05 (план.) - 10.08 13:05 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, окончание</td>
+                            <td>10.08 22:25 (план.) - 10.08 22:25 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, начало</td>
+                            <td>22:25</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, завершение</td>
+                            <td>22:47</td>
+                        </tr>
+                        <tr>
+                            <td>Выход</td>
+                            <td>14</td>
+                        </tr>
+                    </table>
+                    <label for="tr7" class="close">×</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="flyout">
+        <td><label for="tr6"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
+        <td><label for="tr6">UN 3161</label></td>
+        <td><label for="tr6">Аэрофлот</label></td>
+        <td><label for="tr6"><i class="sprite sprite-aeroflot-icon"></i></label></td>
+        <td><label for="tr6"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
+        <td><label for="tr6"><span class="long-name">Симферополь Интернэйшнл</span><span
+                class="short-name">Симферополь</span></label></td>
+        <td><label for="tr6">13:52</label></td>
+        <td><label for="tr6">00:37</label></td>
+        <td><label for="tr6">Задержан</label></td>
+        <td><label for="tr6">-</label></td>
+        <td><input type="checkbox" id="tr8">
+
+            <div class="overlay">
+                <div class="popup">
+                    <h3>Информация о рейсе</h3>
+                    <table class="popup-table">
+                        <tr>
+                            <td>Вылет</td>
+                            <td>Симферополь, 11.08 в 04:45</td>
+                        </tr>
+                        <tr>
+                            <td>Направление</td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
+                        </tr>
+                        <tr>
+                            <td>Номер рейса</td>
+                            <td>SU2471</td>
+                        </tr>
+                        <tr>
+                            <td>Авиакомпания</td>
+                            <td>Аэрофлот</td>
+                        </tr>
+                        <tr>
+                            <td>Воздушное судно</td>
+                            <td>Airbus А320</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, начало</td>
+                            <td>10.08 13:05 (план.) - 10.08 13:05 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, окончание</td>
+                            <td>10.08 22:25 (план.) - 10.08 22:25 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, начало</td>
+                            <td>22:25</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, завершение</td>
+                            <td>22:47</td>
+                        </tr>
+                        <tr>
+                            <td>Выход</td>
+                            <td>14</td>
+                        </tr>
+                    </table>
+                    <label for="tr8" class="close">×</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="flyout">
+        <td><label for="tr6"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
+        <td><label for="tr6">LO677</label></td>
+        <td><label for="tr6">LOT - Polish Airlines</label></td>
+        <td><label for="tr6"><i class="sprite sprite-polishairlines-icon"></i></label></td>
+        <td><label for="tr6"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
+        <td><label for="tr6"><span class="long-name">Варшава Варшава, им. Фредерика Шопена</span><span
+                class="short-name">Варшава</span></label></td>
+        <td><label for="tr6">13:52</label></td>
+        <td><label for="tr6">00:45</label></td>
+        <td><label for="tr6">Приземлился</label></td>
+        <td><label for="tr6">-</label></td>
+        <td><input type="checkbox" id="tr9">
+
+            <div class="overlay">
+                <div class="popup">
+                    <h3>Информация о рейсе</h3>
+                    <table class="popup-table">
+                        <tr>
+                            <td>Вылет</td>
+                            <td>Махачкала , 11.08 в 04:45</td>
+                        </tr>
+                        <tr>
+                            <td>Направление</td>
+                            <td>Варшава , терминал А, 10.08 в 23:05</td>
+                        </tr>
+                        <tr>
+                            <td>Номер рейса</td>
+                            <td>SU2471</td>
+                        </tr>
+                        <tr>
+                            <td>Авиакомпания</td>
+                            <td>Аэрофлот</td>
+                        </tr>
+                        <tr>
+                            <td>Воздушное судно</td>
+                            <td>Airbus А320</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, начало</td>
+                            <td>10.08 13:05 (план.) - 10.08 13:05 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, окончание</td>
+                            <td>10.08 22:25 (план.) - 10.08 22:25 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, начало</td>
+                            <td>22:25</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, завершение</td>
+                            <td>22:47</td>
+                        </tr>
+                        <tr>
+                            <td>Выход</td>
+                            <td>14</td>
+                        </tr>
+                    </table>
+                    <label for="tr9" class="close">×</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="flyout">
+        <td><label for="tr2"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
+        <td><label for="tr2">CZ355</label></td>
+        <td><label for="tr2">China Southirn</label></td>
+        <td><label for="tr2"><i class="sprite sprite-china-icon"></i></label></td>
+        <td><label for="tr2"><span class="long-name">Airbus А320</span><span class="short-name">A320</span></label></td>
+        <td><label for="tr2"><span class="long-name">Ухань Ухань</span><span class="short-name">Ухань</span></label>
+        </td>
+        <td><label for="tr2">12:52</label></td>
+        <td><label for="tr2">16:52</label></td>
+        <td><label for="tr2">Отправлен</label></td>
+        <td><label for="tr2">-</label></td>
+        <td><input type="checkbox" id="tr10">
+
+            <div class="overlay">
+                <div class="popup">
+                    <h3>Информация о рейсе</h3>
+                    <table class="popup-table">
+                        <tr>
+                            <td>Вылет</td>
+                            <td>Ухань , 11.08 в 04:45</td>
+                        </tr>
+                        <tr>
+                            <td>Направление</td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
+                        </tr>
+                        <tr>
+                            <td>Номер рейса</td>
+                            <td>SU2471</td>
+                        </tr>
+                        <tr>
+                            <td>Авиакомпания</td>
+                            <td>Аэрофлот</td>
+                        </tr>
+                        <tr>
+                            <td>Воздушное судно</td>
+                            <td>Airbus А320</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, начало</td>
+                            <td>10.08 13:05 (план.) - 10.08 13:05 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, окончание</td>
+                            <td>10.08 22:25 (план.) - 10.08 22:25 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, начало</td>
+                            <td>22:25</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, завершение</td>
+                            <td>22:47</td>
+                        </tr>
+                        <tr>
+                            <td>Выход</td>
+                            <td>14</td>
+                        </tr>
+                    </table>
+                    <label for="tr10" class="close">×</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="flyout">
+        <td><label for="tr6"><i class="fly_icon icon-1"></i><span class="fly_type">Вылет</span></label></td>
+        <td><label for="tr6">BA8341</label></td>
+        <td><label for="tr6">AirBaltic </label></td>
+        <td><label for="tr6"><i class="sprite sprite-airbaltic-icon"></i></label></td>
+        <td><label for="tr6"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
+        <td><label for="tr6"><span class="long-name">Берлин Тегель</span><span
+                class="short-name">Берлин</span></label></td>
+        <td><label for="tr6">13:52</label></td>
+        <td><label for="tr6">00:37</label></td>
+        <td><label for="tr6">Отправлен</label></td>
+        <td><label for="tr6">-</label></td>
+        <td><input type="checkbox" id="tr11">
+
+            <div class="overlay">
+                <div class="popup">
+                    <h3>Информация о рейсе</h3>
+                    <table class="popup-table">
+                        <tr>
+                            <td>Вылет</td>
+                            <td>Берлин, 11.08 в 04:45</td>
+                        </tr>
+                        <tr>
+                            <td>Направление</td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
+                        </tr>
+                        <tr>
+                            <td>Номер рейса</td>
+                            <td>SU2471</td>
+                        </tr>
+                        <tr>
+                            <td>Авиакомпания</td>
+                            <td>Аэрофлот</td>
+                        </tr>
+                        <tr>
+                            <td>Воздушное судно</td>
+                            <td>Airbus А320</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, начало</td>
+                            <td>10.08 13:05 (план.) - 10.08 13:05 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, окончание</td>
+                            <td>10.08 22:25 (план.) - 10.08 22:25 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, начало</td>
+                            <td>22:25</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, завершение</td>
+                            <td>22:47</td>
+                        </tr>
+                        <tr>
+                            <td>Выход</td>
+                            <td>14</td>
+                        </tr>
+                    </table>
+                    <label for="tr11" class="close">×</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="flyin">
+        <td><label for="tr3"><i class="fly_icon icon-2"></i><span class="fly_type">Прилет</span></label></td>
+        <td><label for="tr3">UT381</label></td>
+        <td><label for="tr3">UTair</label></td>
+        <td><label for="tr3"><i class="sprite sprite-utair-icon"></i></label></td>
+        <td><label for="tr3"><span class="long-name">Boeing 737</span><span class="short-name">B737</span></label></td>
+        <td><label for="tr3"><span class="long-name">Нью Йорк Джон Ф Кеннеди инт.</span><span
+                class="short-name">Нью Йорк</span></label></td>
+        <td><label for="tr3">14:52</label></td>
+        <td><label for="tr3">21:52</label></td>
+        <td><label for="tr3">Приземлился</label></td>
+        <td>-</td>
+        <td><input type="checkbox" id="tr12">
+
+            <div class="overlay">
+                <div class="popup">
+                    <h3>Информация о рейсе</h3>
+                    <table class="popup-table">
+                        <tr>
+                            <td>Вылет</td>
+                            <td>Нью Йорк , 11.08 в 04:45</td>
+                        </tr>
+                        <tr>
+                            <td>Направление</td>
+                            <td>Москва (Внуково) , терминал А, 10.08 в 23:05</td>
+                        </tr>
+                        <tr>
+                            <td>Номер рейса</td>
+                            <td>SU2471</td>
+                        </tr>
+                        <tr>
+                            <td>Авиакомпания</td>
+                            <td>Аэрофлот</td>
+                        </tr>
+                        <tr>
+                            <td>Воздушное судно</td>
+                            <td>Airbus А320</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, начало</td>
+                            <td>10.08 13:05 (план.) - 10.08 13:05 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Регистрация, окончание</td>
+                            <td>10.08 22:25 (план.) - 10.08 22:25 (факт.)</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, начало</td>
+                            <td>22:25</td>
+                        </tr>
+                        <tr>
+                            <td>Посадка, завершение</td>
+                            <td>22:47</td>
+                        </tr>
+                        <tr>
+                            <td>Выход</td>
+                            <td>14</td>
+                        </tr>
+                    </table>
+                    <label for="tr12" class="close">×</label>
+                </div>
+            </div>
+        </td>
+    </tr>
     </tbody>
 </table>
 
-<div style="height: 300px;" id="red">
-    <div class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto at debitis iure
-        laborum nesciunt nihil. Aliquam deleniti exercitationem, laboriosam nobis obcaecati ratione repudiandae saepe
-        sint! Consequuntur error magni numquam!
-    </div>
+<div style="height: 300px;" >
 </div>
 <div style="height: 300px;"></div>
 

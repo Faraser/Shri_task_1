@@ -27,29 +27,28 @@ table {
 thead {
     background: #1ABC9C;
     color: white;
-    /*overflow: hidden;*/
-    /*text-overflow: ellipsis;*/
 }
 
 th, td {
     text-align: center;
     padding: 5px 0;
 }
+td label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-/*tbody tr:nth-child(2n) {*/
-/*background: #ECF0F1;*/
-/*}*/
 .strip {
     background: #ECF0F1;
 }
 
+
 tbody tr:hover {
     background: #CCE7E7;
-    /*color: #FFFFFF;*/
     cursor: pointer;
 }
 
-.highlighted {
+.vert-hover {
     background: #CCE7E7;
 }
 
@@ -75,10 +74,20 @@ tbody tr:hover {
 
 thead th:nth-child(3) {
     position: relative;
-    left: 30px;
+    left: 40px;
 }
 
-
+.avia-table .fly_icon {
+    background: url('../img/icon-plane.png') no-repeat;
+    height: 16px;
+    width: 20px;
+}
+.avia-table .icon-1 {
+    background-position: 0 -19px;
+}
+.avia-table .icon-2 {
+    background-position: -24px -19px;
+}
 
 @media screen and (max-width: 1100px) {
     thead th:nth-child(4),
@@ -87,7 +96,7 @@ thead th:nth-child(3) {
     }
 
     thead th:nth-child(3) {
-        position: relative;
+        position: static;
         left: 0;
     }
 }
@@ -99,7 +108,6 @@ thead th:nth-child(3) {
     tbody td:nth-child(7) {
         overflow: hidden;
         text-overflow: ellipsis;
-        /*outline: 1px solid red;*/
         max-width: 75px;
     }
 
@@ -111,7 +119,6 @@ thead th:nth-child(3) {
     tbody td:nth-child(9) {
         overflow: hidden;
         text-overflow: ellipsis;
-        /*outline: 1px solid green;*/
         max-width: 75px;
     }
 
@@ -119,22 +126,19 @@ thead th:nth-child(3) {
 
 @media screen and (max-width: 850px) {
 
-    thead th:nth-child(3),
-    tbody td:nth-child(4),
-    tbody td:nth-child(4) img {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        /*outline: 1px solid green;*/
-        max-width: 100px;
-        height: auto;
-    }
-
     thead th:nth-child(10),
     tbody td:nth-child(10) {
         overflow: hidden;
         text-overflow: ellipsis;
-        /*outline: 1px solid green;*/
         max-width: 75px;
+    }
+    .fly_type {
+        display: none;
+    }
+
+    .avia-table .fly_icon {
+        vertical-align: middle;
+        display: inline-block;
     }
 }
 
@@ -160,7 +164,6 @@ thead th:nth-child(3) {
     tbody td:nth-child(7) {
         overflow: hidden;
         text-overflow: ellipsis;
-        /*outline: 1px solid red;*/
         max-width: 50px;
     }
 
@@ -168,9 +171,7 @@ thead th:nth-child(3) {
     tbody td:nth-child(10) {
         display: none;
     }
-}
 
-@media screen and (max-width: 550px) {
     thead th:nth-child(3),
     tbody td:nth-child(4) {
         display: none;
@@ -203,9 +204,22 @@ thead th:nth-child(3) {
 
 }
 
-#red {
-    background: red
+/*popup*/
+tbody tr td:nth-child(11) {
+    visibility: hidden;
 }
+
+tbody tr td:nth-child(11) input[type="checkbox"]:checked + .overlay {
+    visibility: visible;
+}
+
+tbody tr td label {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
 
 .overlay {
     position: fixed;
@@ -213,7 +227,6 @@ thead th:nth-child(3) {
     left: 0;
     min-width: 100%;
     min-height: 100%;
-    /*display: none;*/
     visibility: hidden;
     z-index: 100;
     background: rgba(0, 0, 0, 0.7);
@@ -233,7 +246,7 @@ thead th:nth-child(3) {
     border: 1px solid grey;
     padding: 8px;
     width: 300px;
-    height: 460px;
+    height: 480px;
     color: black;
     border-radius: 5px;
     font-size: 15px;
@@ -243,13 +256,13 @@ thead th:nth-child(3) {
     position: absolute;
     top: 5px;
     right: 10px;
-    /*transition: all 200ms;*/
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
     color: #333;
     width: 20px;
     height: 20px;
+    overflow: visible;
 }
 .popup .close:hover {
     color: orange;
@@ -265,7 +278,11 @@ thead th:nth-child(3) {
     text-align: center;
 }
 
-input[type="checkbox"], .flyin, .flyout {
+#flyout,
+#flyin,
+.avia-table input[type="checkbox"],
+.flyin,
+.flyout {
     display: none;
 }
 
@@ -290,7 +307,7 @@ input[type="checkbox"], .flyin, .flyout {
 
 #flyin:checked ~ .controls .check-flyin:after,
 #flyout:checked ~ .controls .check-flyout:after {
-    content: "\2714"; /* Tick */
+    content: "\2714";
     color: white;
     background-color: #666;
     text-align: center;
@@ -298,20 +315,51 @@ input[type="checkbox"], .flyin, .flyout {
     text-shadow: 0px 0px 3px #eee;
 }
 
-/*popup*/
-tbody tr td:nth-child(11) {
-    visibility: hidden;
-    /*outline: red;*/
+/* sprites */
+.sprite {
+    background-image: url('../img/aircompany-sprite.png');
+    background-repeat: no-repeat;
+    display: block;
 }
 
-tbody tr td:nth-child(11) input[type="checkbox"]:checked + .overlay {
-    visibility: visible;
+.sprite-aeroflot-icon {
+    width: 140px;
+    height: 28px;
+    background-position: -5px -5px;
 }
 
-tbody tr td label {
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
+.sprite-airbaltic-icon {
+    width: 120px;
+    height: 28px;
+    background-position: -5px -43px;
 }
 
+.sprite-china-icon {
+    width: 140px;
+    height: 28px;
+    background-position: -5px -81px;
+}
+
+.sprite-polishairlines-icon {
+    width: 140px;
+    height: 28px;
+    background-position: -5px -119px;
+}
+
+.sprite-russia-icon {
+    width: 140px;
+    height: 28px;
+    background-position: -5px -157px;
+}
+
+.sprite-transaero-icon {
+    width: 140px;
+    height: 28px;
+    background-position: -155px -5px;
+}
+
+.sprite-utair-icon {
+    width: 140px;
+    height: 28px;
+    background-position: -135px -43px;
+}
