@@ -47,7 +47,7 @@ $(document).ready(function () {
     });
 
     $('input[id^="fly"]').on('change', function () {
-        setTimeout(strip, 0)
+        setTimeout(strip, 0);
     });
     strip();
 
